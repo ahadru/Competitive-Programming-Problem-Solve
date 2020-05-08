@@ -3,3 +3,7 @@
 *.out
 *.exe
 tempCodeRunnerFile.cpp
+tmp.cpp
+in.txt
+out.txt
+*.o

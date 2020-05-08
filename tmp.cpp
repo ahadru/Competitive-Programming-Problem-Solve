@@ -1,26 +1,61 @@
-#include <bits/stdc++.h>
-#define M0(a) memset(a,0,sizeof a)
-#define M1(a) memset(a,1,sizeof a)
-#define M1_(a) memset(a,-1,sizeof a)
-#define D(v) cerr<<#v<<": "<<v<<endl
-#define D2(a,b) cerr<<#a<<": "<<a<<","<<#b<<": "<<b<<endl
-#define For(i,n) for( __typeof(n)i = 0 ; i < n ; i++)
-#define For1(i,n) for( __typeof(n)i = 1 ; i <= n ; i++)
-#define ForIT(i,n) for(__typeof(n.begin())i = n.begin();i!=n.end();i++)
-#define M100 10000000
-#define M10 1000000
-#define M 100000
-#define MS 10000
+#include<stdio.h>
+#include<iostream>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+#include<map>
+#include<sstream>
+#include<set>
+#include <queue>
+#define pb push_back
+#define ms(a,v) memset(a,v,sizeof a)
 using namespace std;
 
-int main(){
-    //freopen("in.txt","r",stdin);
-    //freopen("out.txt","w",stdout);
-    int *p;
-    int c = 10;
-    p = &c;
-    cout<<*p<<endl;
-    c = 11;
-    cout<<*p<<endl;
-    return 0;
+typedef long long ll;
+
+#define rep(i,n) for( __typeof(n)i = 0 ; i < n ; i++)
+#define For(i,n) for( __typeof(n)i = 1 ; i <= n ; i++)
+#define forstl(i,n) for(__typeof(n.begin())i = n.begin();i!=n.end();i++)
+
+#define mod 100000007
+
+int n , sz ;
+vector<char>ans;
+bool taken[107];
+char s[107];
+
+void back()
+{
+    if(ans.size() == sz )
+    {
+        rep(i,sz) printf("%c",ans[i]);
+        puts("");
+        return;
+    }
+    for(int i = 0 ; i < n ; i++ )
+    {
+        if(ans.size() > 0 && ans[ ans.size()-1 ] > s[i] )  continue;
+
+        if(taken[i] == false){
+            taken[i] = true;
+            ans.push_back(s[i]);
+            back();
+            taken[i] = false;
+            ans.pop_back();
+            while(s[i]==s[i+1] && i+1 < n )i++;
+        }
+    }
+}
+int main()
+{
+    while(scanf("%s %d",s,&sz)==2)
+    {
+        n = strlen(s);
+        sort(s,s+n);
+        ans.clear();
+        ms(taken,false);
+        back();
+    }
 }
