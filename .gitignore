@@ -1,9 +1,12 @@
+tmp.cpp
+*/tmp.cpp
 *.txt
 *.class
 *.out
 *.exe
 tempCodeRunnerFile.cpp
-tmp.cpp
+*/in.txt
 in.txt
+*/out.txt
 out.txt
 *.o
